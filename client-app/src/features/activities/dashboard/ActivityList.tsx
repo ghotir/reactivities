@@ -4,17 +4,10 @@ import {observer} from 'mobx-react-lite';
 import ActivityStore from "../../../app/stores/activityStore";
 import { Link } from "react-router-dom";
 
-interface IProps {
-  submitting: boolean;
-  target: string;
-}
 
-const ActivityList: React.FC<IProps> = ({
-  submitting,
-  target
-}) => {
+const ActivityList: React.FC = () => {
   const activityStore = useContext(ActivityStore);
-  const {activitiesByDate: activities, deleteActivity} = activityStore;
+  const {activitiesByDate: activities, deleteActivity, submitting, target} = activityStore;
 
   return (
     <Segment clearing>
