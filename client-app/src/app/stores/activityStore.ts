@@ -42,9 +42,9 @@ class ActivityStore {
         activities.forEach(activity => {
           activity.date = activity.date.split(".")[0];
           this.activityRegistry.set(activity.id, activity);
-        });
-        this.loadingInitial = false;
       });
+      this.loadingInitial = false;
+    });
     } catch (error) {
       console.log(error);
       runInAction("loading activities error", () => {
@@ -63,11 +63,11 @@ class ActivityStore {
         let activity = await agent.Activities.details(id);
         runInAction("loading activities", () => {
           this.activity = activity;
-          this.loadingInitial = true;
+          this.loadingInitial = false;
         });
       } catch (error) {
         runInAction("loading activities", () => {
-          this.loadingInitial = true;
+          this.loadingInitial = false;
         });
         console.log(error);
       }
